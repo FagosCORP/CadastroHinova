@@ -1,43 +1,44 @@
+<?php session_start()?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hinova</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title>Formulario</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-</a>
-<a class="navbar-brand" href="/">
-    <img src="/src/login.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-    <span class="Login-text">Login</span>
-</a>
-</header>
-<div class="containerForm">
-    <form method="POST" action="controllers\Login.php">
-        <div class="mb-3">
-            <label for="formLabel" class="form-label">E-mail</label>
-            <input type="email" class="form-control" placeholder="Digite seu e-mail" required name="email">
 
-        </div>
-        <div class="mb-3">
-            <label for="formLabel" class="form-label">Senha</label>
-            <input type="password" class="form-control" placeholder="Digite sua senha" required name="senha">
-        </div>
-        <button type="submit" class="btn btn-primary" name="PostCredenciais" value="conectar">Conectar-se</button>
-    </form>
-    <?php if (isset($_GET['error'])) {
-        $errormsg = $_GET['error'] == 'invalid_credenciais' ? 'Usuario e/ou senha invalidos!' :
-            'Faça o login para continuar' ?>
-        <div class="alert alert-danger" role="alert"> <?php echo  $errormsg; ?></div>
-    <?php } ?>
-</div>
-
-
-<footer><span class="Login-footer">©teste 2021</span></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<body>
+    <section>
+        <form method="POST" action="action/actions.php">
+            <div class="containerForm">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" required maxlength="20" placeholder="nome">
+            </div>
+            <div class="containerForm">
+                <label for="dataNasc">Data de nascimento </label>
+                <input type="date" name="dataNasc" id="dataNasc" required>
+            </div>
+            <div class="containerForm">
+                <label for="idade"> Idade </label>
+                <input type="number" name="idade" id="idade">
+            </div>
+            <div class="containerForm">
+                <label for="cep">Cep </label>
+                <input type="text" name="cep" id="cep" required maxlength="8" placeholder="33115530">
+            </div>
+            <div class="containerForm">
+                <label for="logradouro"> Logradouro </label>
+                <input type="text" name="logradouro" id="logradouro" placeholder="Av.Tupinambas">
+            </div>
+            <?php if(isset($_GET['field'])):?>
+            <div>Por favor, verifique os campos preenchidos.</div>
+            <?php endif;?>    
+            <div class="containerButton"><button type="submit">Confirmar</button></div>
+        </form>
+    </section>
 </body>
 
 </html>
